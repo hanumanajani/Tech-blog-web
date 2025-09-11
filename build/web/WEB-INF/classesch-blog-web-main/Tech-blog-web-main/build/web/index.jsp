@@ -95,7 +95,7 @@
             Dive into blogs powered by JSP, Servlets & JDBC.
         </p>
         <div class="mt-4">
-            <a href="register.jsp" class="btn btn-light btn-lg btn-custom animate__animated animate__heartBeat animate__infinite mr-2">
+            <a href="register_page.jsp" class="btn btn-light btn-lg btn-custom animate__animated animate__heartBeat animate__infinite mr-2">
                 <i class="fa fa-pencil"></i> Register Now
             </a>
             <a href="login_page.jsp" class="btn btn-outline-light btn-lg btn-custom animate__animated animate__fadeInRight animate__delay-2s">
@@ -143,7 +143,7 @@
 <div class="container-fluid py-5 text-white gradient-bg text-center">
     <h2 class="animate__animated animate__flash animate__infinite">🚀 Start Your Coding Journey Today!</h2>
     <p class="lead animate__animated animate__fadeInUp">Create an account, write blogs, and connect with fellow tech enthusiasts.</p>
-    <a href="register.jsp" class="btn btn-light btn-lg btn-custom animate__animated animate__heartBeat animate__infinite">
+    <a href="register_page.jsp" class="btn btn-light btn-lg btn-custom animate__animated animate__heartBeat animate__infinite">
         <i class="fa fa-pencil"></i> Register Now
     </a>
 </div>

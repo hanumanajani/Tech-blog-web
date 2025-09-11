@@ -60,7 +60,7 @@
                 </a>
             </li>
             
-            <li class="nav-item dropdown">
+<!--            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fa fa-check-square-o"></span> Categories
@@ -71,11 +71,11 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Data Structures</a>
                 </div>
-            </li>
+            </li>-->
             
-            <li class="nav-item">
+<!--            <li class="nav-item">
                 <a class="nav-link" href="#"><span class="fa fa-address-card"></span> Contact</a>
-            </li>
+            </li>-->
         </ul>
 
         <!-- Right menu -->

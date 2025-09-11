@@ -23,6 +23,10 @@
         <link href="css/mystyle.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
+            html, body {
+            overflow-x: hidden;    /* stop horizontal scroll */
+            scroll-behavior: smooth;
+        }
             .banner-background{
                 clip-path: polygon(30% 0%, 70% 0%, 100% 0, 100% 95%, 66% 100%, 32% 95%, 0 100%, 0 0);
             }
@@ -112,7 +116,7 @@
             </li>
 
             <!-- Categories Dropdown -->
-            <li class="nav-item dropdown">
+<!--            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fa fa-check-square-o"></span> Categories
@@ -123,13 +127,13 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Data Structures</a>
                 </div>
-            </li>
+            </li>-->
 
-            <li class="nav-item">
+<!--            <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span class="fa fa-address-card"></span> Contact
                 </a>
-            </li>
+            </li>-->
 
             <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#add-post-modal">
@@ -185,16 +189,17 @@
         <!--main body of the page-->
 
         <main>
-            <div class="container">
-                <div class="row md-4 mt-2">
-                    <!--first co1-->
-                    <div class="col-md-4">
-
-                        <!--categories-->
-                        <div class="list-group">
-                            <a href="#" onclick="getPosts(0,this)" class="c-link list-group-item list-group-item-action active" aria-current="true">
-                                All Posts
-                            </a>
+            <div class="container mt-3">
+        <div class="row g-4">
+            <!-- Categories Column -->
+            <div class="col-md-4">
+                <div class="glass-card p-3">
+                    <h5 class="text-white mb-3">Categories</h5>
+                    <div class="list-group">
+                        <a href="#" onclick="getPosts(0,this)" 
+                           class="c-link list-group-item list-group-item-action active">
+                            All Posts
+                        </a>
                             <%
                                 PostDao d = new PostDao(ConnectionProvider.getConnection());
                                 ArrayList<Category> list1 = d.getAllCategoty();
@@ -207,13 +212,14 @@
                              
                         </div>
                     </div>
+                              </div>
                     <!--2nd col--> 
                     <div class="col-md-8">
                         <!--posts-->
-                        <div class="container text-center" id="loader">
-                            <i class="fa fa-refresh fa-4x fa-spin"></i>
-                            <h3>loading....</h3>
-                        </div>
+                        <div class="glass-card text-center py-5" id="loader">
+                    <i class="fa fa-refresh fa-4x fa-spin text-white"></i>
+                    <h4 class="text-white mt-3">Loading posts...</h4>
+                </div>
                         <div class="container-fluid" id="post-container">
                             
                         </div>
@@ -224,6 +230,56 @@
                 </div>
 
             </div>
+          
+                            <style>
+/* Glassmorphic card for categories and loader */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+}
+
+/* Category links */
+.list-group-item {
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    transition: all 0.3s;
+}
+.list-group-item:hover {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+.list-group-item.active {
+    background: linear-gradient(135deg, #007bff, #6610f2, #6f42c1);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Loader text */
+#loader h4 {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+/* Gradient animation keyframes */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+</style>
 
         </main>
 
@@ -353,7 +409,7 @@
 
         <!--end post modal-->
 
-
+<%--
 
         <!--start of profile modal-->
 
@@ -463,7 +519,160 @@
 
 
         <!--end of profile modal-->
+--%>
+<!--profile model and edit profile model--> 
+<div class="modal fade" id="profile-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content profile-modal">
+            <!-- Modal Header -->
+            <div class="modal-header gradient-header text-white justify-content-center">
+                <h5 class="modal-title" id="exampleModalLabel">Tech~Blog</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="container text-center">
+                    <img src="pics/<%= user.getProfile()%>" 
+                         class="img-fluid profile-img mb-3"/>
+
+                    <h5 class="modal-title text-white"><%= user.getName()%></h5>
+
+                    <!-- Profile Details -->
+                    <div id="profile-details">
+                        <table class="table table-borderless text-white mt-3">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">ID :</th>
+                                    <td><%= user.getId()%></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Email :</th>
+                                    <td><%= user.getEmail()%></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Gender :</th>
+                                    <td><%= user.getGender()%></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Status :</th>
+                                    <td><%= user.getAbout()%></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Registered on :</th>
+                                    <td><%= user.getDateTime().toString()%></td>
+                                </tr>        
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Profile Edit -->
+                    <div id="profile-edit" style="display: none;">
+                        <h5 class="text-white mt-2">Edit Your Profile</h5>
+                        <form action="EditServlet" method="post" enctype="multipart/form-data">
+                            <table class="table table-borderless text-white">
+                                <tr>
+                                    <td>ID :</td>
+                                    <td><%= user.getId()%></td>
+                                </tr>
+                                <tr>
+                                    <td>Email :</td>
+                                    <td><input type="email" class="form-control" name="user_email" value="<%= user.getEmail()%>" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Name :</td>
+                                    <td><input type="text" class="form-control" name="user_name" value="<%= user.getName()%>" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Password :</td>
+                                    <td><input type="password" class="form-control" name="user_password" value="<%= user.getPassword()%>" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Gender :</td>
+                                    <td><%= user.getGender().toUpperCase() %></td>
+                                </tr>
+                                <tr>
+                                    <td>About :</td>
+                                    <td><textarea class="form-control" name="user_about" rows="3"><%= user.getAbout()%></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>New Profile :</td>
+                                    <td><input type="file" class="form-control" name="image"/></td>
+                                </tr>
+                            </table>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-light btn-custom mt-2">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-light btn-custom" data-dismiss="modal">Close</button>
+                <button id="edit-profile-button" type="button" class="btn btn-light btn-custom">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Gradient header like navbar */
+.gradient-header {
+    background: linear-gradient(135deg, #007bff, #6610f2, #6f42c1);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    color: #fff;
+    justify-content: center;
+}
+
+/* Modal overall glassmorphic theme */
+.profile-modal {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    color: #fff;
+}
+
+/* Profile image */
+.profile-img {
+    border-radius: 50%;
+    max-width: 150px;
+    border: 3px solid rgba(255,255,255,0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Buttons */
+.btn-custom {
+    border-radius: 25px;
+    padding: 8px 25px;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+.btn-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Table text styling */
+.table td, .table th {
+    border-top: none;
+    color: #fff;
+}
+
+/* Gradient animation keyframes */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+</style>
+
+
+<!--end profile and profile edit model-->
         <br> 
         <%= user.getEmail()%>
         <br>

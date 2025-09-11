@@ -33,13 +33,13 @@
 
 
     <div class="col-md-6 mt-2">
-        <div class="card fixed-card">
+        <div class="card post-card h-100 shadow-lg">
 
 
-            <img src="blog_pic/<%=p.getpPic() %>" class="card-img-top" alt="Card image cap">
+            <img src="blog_pic/<%=p.getpPic() %>" class="card-img-top img-fluid" alt="Card image cap">
 
             <div class="card-body">
-                <b><%= p.getpTitle()%></b>
+                <b class="card-title fw-bold" ><%= p.getpTitle()%></b>
                 <p class="card-text">
                     <%--<%= p.getpContent()%>--%>
                     <%
@@ -54,13 +54,13 @@
                 <!--code not added-->
                 
             </div>
-                <div class="card-footer text-center primary-background">
+                <div class="card-footer d-flex justify-content-between align-items-center">
                             <%
                                 LikeDao ld = new LikeDao(ConnectionProvider.getConnection());
 
                             %>
                             <a href="#" onclick="doLike(<%=p.getPid()%>,<%=uuu.getId()%>)" class="btn btn-outline-light btn-sm"><i class="fa fa-thumbs-o-up"></i><span class="like-counter"><%=ld.countLikeOnPost(p.getPid())%></span></a>
-                    <a href="show_blog_page.jsp?post_id=<%= p.getPid() %>" class="btn btn-outline-light btn-sm">Read more...</a>
+                    <a href="show_blog_page.jsp?post_id=<%= p.getPid() %>" class="btn btn-light btn-sm text-dark">Read more...</a>
                      
                     <!--<a href="#" class="btn btn-outline-light btn-sm"><i class="fa fa-commenting-o"></i><span>20</span></a>-->
                     
@@ -75,3 +75,37 @@
         }
 
     %>
+    
+
+    <style>
+/* Post card theme synced with navbar gradient */
+.post-card {
+    background: linear-gradient(135deg, #007bff, #6610f2, #6f42c1);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    border-radius: 15px;
+    overflow: hidden;
+    color: #fff;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.post-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.35);
+}
+
+.post-card .card-title {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+}
+
+.post-card .card-text {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* Footer overlay */
+.post-card .card-footer {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+}
+</style>

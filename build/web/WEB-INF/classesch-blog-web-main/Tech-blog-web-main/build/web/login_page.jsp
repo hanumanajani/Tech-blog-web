@@ -441,7 +441,7 @@ margin: 20px;
                         </form>
 
                         <div class="extra-links">
-                            <p class="mt-3">New here? <a href="register.jsp">Create an account</a></p>
+                            <p class="mt-3">New here? <a href="register_page.jsp">Create an account</a></p>
                         </div>
                     </div>
 
