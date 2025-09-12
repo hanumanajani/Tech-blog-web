@@ -5,7 +5,18 @@
 [![Database](https://img.shields.io/badge/Database-MySQL-blue?logo=mysql&logoColor=white)]()  
 [![Frontend](https://img.shields.io/badge/Frontend-HTML_|_CSS_|_jQuery_|_Bootstrap-green)]()  
 
----
+## 📸 Demo  ➡️ **Click the image below to watch the demo video**
+
+<a href="https://drive.google.com/file/d/1SiSNKE2vf7525nzKKeMephncTjygWX2u/view" target="_blank">
+  <img src="https://drive.google.com/uc?export=view&id=1gcwxHG3R1rJpJp3-XGzccBcK2ehDWuPA" 
+       alt="▶️ Watch the demo video" width="500"/>
+</a>  
+
+
+
+
+
+
 
 ## 📌 Overview  
 The **Tech Blog Web Application** is a simple yet functional blogging platform where users can:  
@@ -17,7 +28,7 @@ The **Tech Blog Web Application** is a simple yet functional blogging platform w
 
 Built with **JSP, Servlets, and JDBC (Java backend)**, integrated with **MySQL database**, and styled using **Bootstrap** for a modern look.  
 
----
+
 
 ## 🛠️ Technologies Used  
 
@@ -39,14 +50,10 @@ Built with **JSP, Servlets, and JDBC (Java backend)**, integrated with **MySQL d
 
 ---
 
-## 📸 Screenshots / Demo  
-*(Coming Soon – Add screenshots or demo video link here)*  
-
----
-
 ## 📦 Installation & Setup  
 
 1. **Clone the repository**  
    ```bash
    git clone https://github.com/hanumanajani/Tech-blog-web.git
    cd Tech-blog-web
+
